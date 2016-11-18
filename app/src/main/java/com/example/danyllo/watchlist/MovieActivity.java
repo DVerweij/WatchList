@@ -39,15 +39,15 @@ public class MovieActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
         prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
+        String movie = prefs.getString("movie", "");
+        Log.d("WOW", movie);
+        movieList = (ListView) findViewById(R.id.listView);
+        poster = (ImageView) findViewById(R.id.imageView);
+        filmAdapter = new ArrayAdapter<String>(this, simple_list_item_1, detailList);
+        movieList.setAdapter(filmAdapter);
+        addOrRemove = (Button) findViewById(R.id.button4);
+        //Doesn't print ListView for some reason
         if (savedInstanceState == null) {
-            String movie = prefs.getString("movie", "");
-            Log.d("WOW", movie);
-            movieList = (ListView) findViewById(R.id.listView);
-            poster = (ImageView) findViewById(R.id.imageView);
-            filmAdapter = new ArrayAdapter<String>(this, simple_list_item_1, detailList);
-            movieList.setAdapter(filmAdapter);
-            addOrRemove = (Button) findViewById(R.id.button4);
-            //Doesn't print ListView for some reason
             try {
                 movieJson = new JSONObject(movie);
                 String title = movieJson.getString("Title");
@@ -59,7 +59,7 @@ public class MovieActivity extends AppCompatActivity {
                 filmAdapter.addAll(detailList);
                 filmAdapter.notifyDataSetChanged();
                 //http://stackoverflow.com/questions/8992964/android-load-from-url-to-bitmap
-                setBitMap(movieJson.getString("Poster")); //doesn't work due to https
+                //setBitMap(movieJson.getString("Poster")); //doesn't work due to https
                 Pair<String, JSONObject> pair = new Pair<String, JSONObject>(title, movieJson);
                 if (addedMovies.contains(pair)) {
                     addOrRemove.setText("Remove from Watch List");

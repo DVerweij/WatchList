@@ -36,27 +36,18 @@ public class WatchListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_watch_list);
         prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
-        if (savedInstanceState == null) {
-            searchET = (EditText) findViewById(R.id.editText);
-            movieList = (ListView) findViewById(R.id.movieList);
-            movAdapter = new ArrayAdapter<String>(this, simple_list_item_1, titleList);
-            movieList.setAdapter(movAdapter);
-            movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                public void onItemClick(AdapterView<?> parent, View view,
+        searchET = (EditText) findViewById(R.id.editText);
+        movieList = (ListView) findViewById(R.id.movieList);
+        movAdapter = new ArrayAdapter<String>(this, simple_list_item_1, titleList);
+        movieList.setAdapter(movAdapter);
+        movieList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
                                         int position, long id) {
                     Object titleObj = movieList.getItemAtPosition(position);
                     String titleString = (String) titleObj;
                     goToTitlePage(titleString);
                 }
-            });
-        }
-    }
-
-    //Function to stop refresh at rotation.
-    // http://stackoverflow.com/questions/5123407/losing-data-when-rotate-screen
-    @Override
-    protected void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
+        });
     }
 
     private void goToTitlePage(String titleString) {

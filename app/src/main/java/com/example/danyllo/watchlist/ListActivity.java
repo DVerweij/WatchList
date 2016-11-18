@@ -28,7 +28,6 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        if (savedInstanceState == null) {
             addedMovies = (ListView) findViewById(R.id.addedMovies);
             prefs = this.getSharedPreferences("settings", this.MODE_PRIVATE);
             listAdapter = new ArrayAdapter<String>(this, simple_list_item_1, addedList);
@@ -41,8 +40,6 @@ public class ListActivity extends AppCompatActivity {
                     goToTitlePage(titleString);
                 }
             });
-        }
-
     }
 
     //Function to stop refresh at rotation.
