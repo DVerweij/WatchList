@@ -66,8 +66,9 @@ public class WatchListActivity extends AppCompatActivity {
         Log.d("EXEC", movie);
     }
 
-    public void clickIt(View view) {
-        Log.d("CLICKED", "click");
+    public void goToList(View view) {
+        Intent listActivity = new Intent(this, ListActivity.class);
+        startActivity(listActivity);
     }
 
     public void setData(ArrayList<String> titles, Map<String, JSONObject> movieMap) {

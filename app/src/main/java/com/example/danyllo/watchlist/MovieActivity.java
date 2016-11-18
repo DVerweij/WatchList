@@ -1,5 +1,6 @@
 package com.example.danyllo.watchlist;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -116,5 +117,10 @@ public class MovieActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void goToList(View view) {
+        Intent listActivity = new Intent(this, ListActivity.class);
+        startActivity(listActivity);
     }
 }
