@@ -1,5 +1,8 @@
 package com.example.danyllo.watchlist;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -22,7 +25,13 @@ public class HttpParser {
 
         //get movie title
         String movie = params[0];
+        if (movie.length() < 2) {
+            Toast tooShort = Toast.makeText(this, "More than one character please", Toast.LENGTH_LONG);
+            tooShort.show();
+            return "";
+        }
         String url = api + "s=" + movie + extra;
+        Log.d("URL", url);
 
         //get url and establish connection
         URL extractURL = new URL(url);
@@ -43,6 +52,7 @@ public class HttpParser {
                     new InputStreamReader(connection.getErrorStream()));
 
         }
+        Log.d("RESULT",extract);
         return extract;
     }
 }
