@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_movie"
+    android:id="@+id/activity_watch_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -10,30 +10,36 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.example.danyllo.watchlist.MovieActivity">
+    tools:context="com.example.danyllo.watchlist.WatchListActivity"
+    android:weightSum="1">
+
 
     <Button
         android:text="Watch List"
         android:layout_width="match_parent"
+        android:id="@+id/button"
+        android:onClick="clickIt"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button3" />
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_weight="0.03" />
 
     <Button
-        android:text=""
+        android:text="Search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:onClick="AddOrRemove"/>
+        android:onClick="searchMovie"
+        android:id="@+id/button2"
+        android:layout_weight="0.03" />
 
     <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"/>
-
-    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:srcCompat="@android:drawable/screen_background_light_transparent"
-        android:id="@+id/imageView" />
+        android:layout_height="match_parent"
+        android:id="@+id/movieList" />
 
 </LinearLayout>

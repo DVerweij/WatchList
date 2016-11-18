@@ -26,8 +26,8 @@ public class HttpParser {
         //get movie title
         String movie = params[0];
         if (movie.length() < 2) {
-            Toast tooShort = Toast.makeText(this, "More than one character please", Toast.LENGTH_LONG);
-            tooShort.show();
+            /*Toast tooShort = Toast.makeText(this, "More than one character please", Toast.LENGTH_LONG);
+            tooShort.show();*/ //doesn't work
             return "";
         }
         String url = api + "s=" + movie + extra;
