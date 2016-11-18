@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_watch_list"
     android:layout_width="match_parent"
@@ -8,23 +9,44 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.danyllo.watchlist.WatchListActivity">
+    android:orientation="vertical"
+    tools:context="com.example.danyllo.watchlist.WatchListActivity"
+    android:weightSum="1">
 
 
-    <SearchView
+    <Button
+        android:text="Watch List"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/searchBar"
-        android:onClick="searchTitle" />
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:layout_below="@+id/button"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_weight="0.03" />
+
+    <Button
+        android:text="Search"
+        android:layout_below="@+id/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="searchMovie"
+        android:id="@+id/button2"
+        android:layout_weight="0.03" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/searchBar"
+        android:layout_below="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="15dp" />
-</RelativeLayout>
+        android:id="@+id/movieList" />
+
+</LinearLayout>
